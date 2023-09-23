@@ -43,7 +43,6 @@ namespace OAuthApp
             InitializeComponent();
         }
 
-
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             // Generates state and PKCE values.

@@ -25,15 +25,16 @@ limitations under the License.
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-                <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="button" HorizontalAlignment="Left" Margin="18,22,0,0" VerticalAlignment="Top" Width="206" Height="46" Click="button_Click"
-                BorderThickness="0" Padding="0" Background="Transparent">
-            <Image Source="Assets/btn_google_sign-in.png" Stretch="UniformToFill"/>
+        <Button x:Name="button" Margin="5" BorderBrush="DimGray" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Click="button_Click"
+                BorderThickness="2" Padding="2" Background="Transparent">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Assets/keycloak.png" Stretch="Uniform" />
+                <TextBlock FontSize="20" Text="Sign in with Keycloak" FontWeight="Bold" VerticalAlignment="Center"/>
+            </StackPanel>            
         </Button>
-        <WebBrowser Grid.Row="1" x:Name="wb"/>
-        <TextBox Grid.Row="2" x:Name="textBoxOutput" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="470"
+        <TextBox Grid.Row="1" Margin="10" x:Name="textBoxOutput" TextWrapping="Wrap" Text="" 
          IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto"
          />
     </Grid>
