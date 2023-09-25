@@ -13,10 +13,10 @@ namespace OAuthDesktopApp
     public class KeycloakService
     {
         // client configuration
-        const string clientID = "sandy";
-        const string clientSecret = "MGG27dWcsFQHKBAogphoHgBp0WXPuOa2";
-        const string authorizationEndpoint = "http://localhost:8080/realms/test/protocol/openid-connect/auth";
-        const string tokenEndpoint = "http://localhost:8080/realms/test/protocol/openid-connect/token";
+        const string clientID = "hapiman";
+        const string clientSecret = "ygl4AbFhfJz0ZlIAl2hQy4ZiV46YVD1G";
+        const string authorizationEndpoint = "http://192.168.146.17:8081/realms/master/protocol/openid-connect/auth";
+        const string tokenEndpoint = "http://192.168.146.17:8081/realms/master/protocol/openid-connect/token";
         const string redirectEndpoint = "http://localhost:4200";
 
         public async Task<string> GetTokenAsync()
@@ -43,20 +43,21 @@ namespace OAuthDesktopApp
 
             // Waits for the OAuth authorization response.
             var context = await http.GetContextAsync();
+            http.Stop();
 
             // Sends an HTTP response to the browser.
-            var response = context.Response;
-            string responseString =
-                string.Format("<html><head><meta http-equiv='refresh' content='10;url=https://google.com'></head><body>Please return to the app.</body></html>");
-            var buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-            response.ContentLength64 = buffer.Length;
-            var responseOutput = response.OutputStream;
-            Task responseTask = responseOutput.WriteAsync(buffer, 0, buffer.Length).ContinueWith((task) =>
-            {
-                responseOutput.Close();
-                http.Stop();
-                Console.WriteLine("HTTP server stopped.");
-            });
+            //var response = context.Response;
+            //string responseString =
+            //    string.Format("<html><head><meta http-equiv='refresh' content='10;url=https://google.com'></head><body>Please return to the app.</body></html>");
+            //var buffer = new 
+            //response.ContentLength64 = buffer.Length;
+            //var responseOutput = response.OutputStream;
+            //Task responseTask = responseOutput.WriteAsync(buffer, 0, buffer.Length).ContinueWith((task) =>
+            //{
+            //    responseOutput.Close();
+            //    http.Stop();
+            //    Console.WriteLine("HTTP server stopped.");
+            //});
 
             // Checks for errors.
             if (context.Request.QueryString.Get("error") != null)
